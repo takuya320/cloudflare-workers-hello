@@ -7,14 +7,20 @@
 		"deploy": "wrangler deploy",
 		"dev": "wrangler dev",
 		"start": "wrangler dev",
+		"test": "jest",
+		"test:watch": "jest --watch",
+		"test:coverage": "jest --coverage",
 		"format": "prettier --write .",
 		"format:check": "prettier --check .",
 		"type-check": "tsc --noEmit",
 		"lint": "pnpm run format:check && pnpm run type-check"
 	},
 	"devDependencies": {
-		"@cloudflare/workers-types": "^4.20231218.0",
+		"@cloudflare/workers-types": "^4.20251109.0",
+		"@types/jest": "^30.0.0",
+		"jest": "^30.2.0",
 		"prettier": "^3.4.2",
+		"ts-jest": "^29.4.5",
 		"typescript": "^5.0.4",
 		"wrangler": "^4.46.0"
 	}
