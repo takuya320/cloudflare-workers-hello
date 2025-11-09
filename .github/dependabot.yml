@@ -1,6 +1,8 @@
 version: 2
 updates:
   # Enable version updates for npm
+  # Note: This project uses pnpm, but Dependabot uses "npm" ecosystem
+  # and will automatically detect and work with pnpm-lock.yaml
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
