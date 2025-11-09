@@ -9,23 +9,29 @@ This is a Cloudflare Workers project - a serverless JavaScript/TypeScript applic
 ## Development Commands
 
 ### Local Development
+
 ```bash
 npm run dev
 # or
 npx wrangler dev
 ```
+
 Starts local development server at http://localhost:8787/
 
 ### Deployment
+
 ```bash
 npm run deploy
 # or
 npx wrangler deploy
 ```
+
 Deploys the worker to Cloudflare's edge network.
 
 ### Type Checking
+
 The project uses TypeScript with `noEmit: true`, meaning Wrangler handles compilation. Run type checking with:
+
 ```bash
 npx tsc --noEmit
 ```
@@ -33,16 +39,20 @@ npx tsc --noEmit
 ## Architecture
 
 ### Entry Point
+
 - **src/index.ts**: Single file containing the worker's fetch handler
 - Exports a default object with an async `fetch()` method
 - Uses the standard Workers API: `fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response>`
 
 ### Environment Bindings
+
 The `Env` interface in src/index.ts defines available bindings (currently empty). When adding Cloudflare services, update both:
+
 1. The `Env` interface in src/index.ts
 2. The corresponding binding configuration in wrangler.toml
 
 ### Configuration
+
 - **wrangler.toml**: Worker configuration including name, entry point, compatibility date, and service bindings
 - **tsconfig.json**: Configured for ES2021 target with Cloudflare Workers types (@cloudflare/workers-types/2023-07-01)
 
@@ -66,6 +76,7 @@ To add KV, R2, Durable Objects, Queues, or other Workers services:
 ## Package Management
 
 This project uses **pnpm**. While npm/npx commands work, pnpm is preferred:
+
 ```bash
 pnpm install
 pnpm run dev
@@ -75,6 +86,7 @@ pnpm run deploy
 ## Dependency Updates
 
 Dependabot is configured for automated dependency updates:
+
 - Runs weekly on Mondays at 09:00 JST
 - Groups minor/patch updates for development and production dependencies
 - PRs auto-assigned to @takuya320

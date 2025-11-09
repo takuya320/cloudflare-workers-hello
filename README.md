@@ -96,12 +96,12 @@ Example bindings are commented out in both files for reference.
 
 ## Development Commands
 
-| Command | Description |
-|---------|-------------|
-| `pnpm run dev` | Start local development server |
-| `pnpm run deploy` | Deploy to Cloudflare Workers |
-| `pnpm run start` | Alias for `dev` |
-| `npx tsc --noEmit` | Run type checking |
+| Command            | Description                    |
+| ------------------ | ------------------------------ |
+| `pnpm run dev`     | Start local development server |
+| `pnpm run deploy`  | Deploy to Cloudflare Workers   |
+| `pnpm run start`   | Alias for `dev`                |
+| `npx tsc --noEmit` | Run type checking              |
 
 ## Resources
 

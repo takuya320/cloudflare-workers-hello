@@ -1,16 +1,21 @@
 {
-  "name": "hello",
-  "version": "0.0.0",
-  "private": true,
-  "packageManager": "pnpm@9.0.0",
-  "scripts": {
-    "deploy": "wrangler deploy",
-    "dev": "wrangler dev",
-    "start": "wrangler dev"
-  },
-  "devDependencies": {
-    "@cloudflare/workers-types": "^4.20231218.0",
-    "typescript": "^5.0.4",
-    "wrangler": "^4.46.0"
-  }
+	"name": "hello",
+	"version": "0.0.0",
+	"private": true,
+	"packageManager": "pnpm@9.0.0",
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "wrangler dev",
+		"start": "wrangler dev",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"type-check": "tsc --noEmit",
+		"lint": "pnpm run format:check && pnpm run type-check"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20231218.0",
+		"prettier": "^3.4.2",
+		"typescript": "^5.0.4",
+		"wrangler": "^4.46.0"
+	}
 }
