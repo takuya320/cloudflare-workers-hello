@@ -7,6 +7,7 @@ describe('Worker', () => {
 	const mockCtx: ExecutionContext = {
 		waitUntil: jest.fn(),
 		passThroughOnException: jest.fn(),
+		props: {},
 	};
 
 	describe('fetch handler', () => {
