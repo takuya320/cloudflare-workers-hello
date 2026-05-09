@@ -3,7 +3,9 @@
 		"target": "ES2022",
 		"module": "ES2022",
 		"lib": ["ES2022"],
+		"rootDir": "./src",
 		"moduleResolution": "bundler",
+		"ignoreDeprecations": "6.0",
 		"types": ["@cloudflare/workers-types/2023-07-01", "@types/jest"],
 		"resolveJsonModule": true,
 		"allowJs": true,
@@ -15,5 +17,6 @@
 		"strict": true,
 		"skipLibCheck": true,
 		"jsx": "react"
-	}
+	},
+	"include": ["src"]
 }
