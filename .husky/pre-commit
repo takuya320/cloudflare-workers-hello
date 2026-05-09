@@ -1,2 +1,2 @@
-pnpm run lint
-pnpm test
+corepack pnpm run lint
+corepack pnpm test
