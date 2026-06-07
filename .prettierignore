@@ -16,3 +16,6 @@ worker
 # Git
 .git
 .gitignore
+
+# Local tool settings
+.claude
