@@ -8,6 +8,14 @@ describe('Worker', () => {
 		waitUntil: jest.fn(),
 		passThroughOnException: jest.fn(),
 		props: {},
+		// `tracing` became a required field in @cloudflare/workers-types.
+		// The worker under test never touches it, so a no-op stub is enough;
+		// the real `Tracing` shape (incl. the `Span` class) can't be constructed here.
+		tracing: {
+			enterSpan: jest.fn(),
+			startActiveSpan: jest.fn(),
+			Span: jest.fn(),
+		} as unknown as Tracing,
 	};
 
 	describe('fetch handler', () => {
