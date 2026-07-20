@@ -6,7 +6,7 @@
 		"rootDir": "./src",
 		"moduleResolution": "bundler",
 		"ignoreDeprecations": "6.0",
-		"types": ["@cloudflare/workers-types/2023-07-01", "@types/jest"],
+		"types": ["@cloudflare/workers-types", "@types/jest"],
 		"resolveJsonModule": true,
 		"allowJs": true,
 		"checkJs": false,
