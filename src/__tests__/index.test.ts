@@ -8,6 +8,9 @@ describe('Worker', () => {
 		waitUntil: jest.fn(),
 		passThroughOnException: jest.fn(),
 		props: {},
+		// `exports` became a required field in @cloudflare/workers-types v5.
+		// The worker under test never touches it, so an empty stub is enough.
+		exports: {} as Cloudflare.Exports,
 		// `tracing` became a required field in @cloudflare/workers-types.
 		// The worker under test never touches it, so a no-op stub is enough;
 		// the real `Tracing` shape (incl. the `Span` class) can't be constructed here.
