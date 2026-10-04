@@ -19,6 +19,9 @@ describe('Worker', () => {
 			startActiveSpan: jest.fn(),
 			Span: jest.fn(),
 		} as unknown as Tracing,
+		// `abort` became a required field in @cloudflare/workers-types.
+		// The worker under test never calls it, so a no-op stub is enough.
+		abort: jest.fn(),
 	};
 
 	describe('fetch handler', () => {
