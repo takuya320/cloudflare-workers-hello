@@ -21,7 +21,7 @@ Cloudflare Workers 上で動く最小構成の TypeScript アプリです。Work
 
 必要なもの:
 
-- Node.js 22 以上
+- Node.js 26 以上
 - pnpm
 - Cloudflare アカウント（デプロイする場合）
 

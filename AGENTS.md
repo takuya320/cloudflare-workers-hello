@@ -17,7 +17,7 @@ pnpm run format         # Format with Prettier (auto-fix)
 pnpm run lint           # Prettier check + tsc --noEmit (same as CI "Lint & Type Check")
 ```
 
-Package manager is **pnpm** (version pinned in `package.json`). Use `pnpm install` to install dependencies.
+Node version is pinned in `.node-version` (CI and mise/fnm read it). Package manager is **pnpm** (version pinned in `package.json`; Node 26 does not bundle corepack, so CI uses `pnpm/action-setup`). Use `pnpm install` to install dependencies.
 
 ## Architecture
 
