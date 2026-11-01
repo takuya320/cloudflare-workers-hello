@@ -39,6 +39,7 @@ pnpm install
 | `pnpm run deploy`        | Cloudflare Workers にデプロイ                     |
 | `pnpm test`              | テストを実行                                      |
 | `pnpm run test:coverage` | カバレッジ付きでテストを実行                      |
+| `pnpm run test:smoke`    | `wrangler dev` で起動し HTTP で応答を確認         |
 | `pnpm run format`        | Prettier で整形                                   |
 | `pnpm run lint`          | Prettier のチェックと型チェック（`tsc --noEmit`） |
 

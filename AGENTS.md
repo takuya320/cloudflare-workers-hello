@@ -13,6 +13,7 @@ pnpm run dev            # Start local dev server (wrangler dev, http://localhost
 pnpm run deploy         # Deploy to Cloudflare Workers
 pnpm test               # Run tests (jest)
 pnpm run test:coverage  # Run tests with coverage
+pnpm run test:smoke     # Boot the Worker with wrangler dev (workerd) and check GET / over HTTP
 pnpm run format         # Format with Prettier (auto-fix)
 pnpm run lint           # Prettier check + tsc --noEmit (same as CI "Lint & Type Check")
 ```
