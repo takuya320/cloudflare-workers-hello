@@ -11,7 +11,7 @@ Read the target source code, identify vulnerabilities, and report them. Write th
 
 ## Scope
 
-- If `$ARGUMENTS` is given, review only that file or directory
+- If the user names a target (`$ARGUMENTS` in Claude Code), review only that file or directory
 - Otherwise, review all source code under `src/`, plus `wrangler.toml` and `.github/workflows/`
 
 ## What to look for
