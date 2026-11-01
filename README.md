@@ -1,125 +1,78 @@
 # Cloudflare Workers Hello
 
-A serverless TypeScript application running on Cloudflare's edge network. This project demonstrates the basics of Cloudflare Workers development and serves as a foundation for building edge-computing applications.
+[![CI](https://github.com/takuya320/cloudflare-workers-hello/actions/workflows/ci.yml/badge.svg)](https://github.com/takuya320/cloudflare-workers-hello/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/takuya320/cloudflare-workers-hello/graph/badge.svg)](https://codecov.io/gh/takuya320/cloudflare-workers-hello)
+
+Cloudflare Workers 上で動く最小構成の TypeScript アプリです。Workers の開発・テスト・CI・デプロイの土台として使います。
 
 **Live Demo:** <https://hello.takuya9525020062.workers.dev/>
 
-## Features
-
-- TypeScript support with strict type checking
-- Serverless edge computing on Cloudflare's global network
-- Fast local development environment
-- Automated dependency updates via Dependabot
-- Production-ready configuration
-
-## Tech Stack
+## 技術スタック
 
 - **Runtime:** Cloudflare Workers
-- **Language:** TypeScript (ES2021)
-- **Build Tool:** Wrangler CLI
+- **Language:** TypeScript (strict)
+- **Build / Deploy:** Wrangler
+- **Test:** Jest (ts-jest)
+- **Format:** Prettier
 - **Package Manager:** pnpm
-- **Type Definitions:** @cloudflare/workers-types
+- **Dependency updates:** Dependabot（毎週月曜 09:00 JST）
 
-## Prerequisites
+## セットアップ
 
-- Node.js 18+
-- pnpm (recommended) or npm
-- Cloudflare account (for deployment)
+必要なもの:
 
-## Getting Started
-
-### Installation
+- Node.js 22 以上
+- pnpm
+- Cloudflare アカウント（デプロイする場合）
 
 ```bash
-# Clone the repository
 git clone https://github.com/takuya320/cloudflare-workers-hello.git
 cd cloudflare-workers-hello
-
-# Install dependencies
 pnpm install
 ```
 
-### Local Development
+## コマンド
 
-Start the local development server:
+| コマンド                 | 内容                                              |
+| ------------------------ | ------------------------------------------------- |
+| `pnpm run dev`           | ローカル開発サーバーを起動（`localhost:8787`）    |
+| `pnpm run deploy`        | Cloudflare Workers にデプロイ                     |
+| `pnpm test`              | テストを実行                                      |
+| `pnpm run test:coverage` | カバレッジ付きでテストを実行                      |
+| `pnpm run format`        | Prettier で整形                                   |
+| `pnpm run lint`          | Prettier のチェックと型チェック（`tsc --noEmit`） |
 
-```bash
-pnpm run dev
-# or
-npx wrangler dev
-```
-
-The worker will be available at <http://localhost:8787/>
-
-### Deployment
-
-Deploy to Cloudflare's edge network:
-
-```bash
-pnpm run deploy
-# or
-npx wrangler deploy
-```
-
-### Type Checking
-
-Run TypeScript type checking:
-
-```bash
-npx tsc --noEmit
-```
-
-## Project Structure
+## ディレクトリ構成
 
 ```
 .
 ├── src/
-│   └── index.ts          # Worker entry point
-├── wrangler.toml         # Worker configuration
-├── tsconfig.json         # TypeScript configuration
-├── package.json          # Dependencies and scripts
-├── CLAUDE.md            # AI assistant guidance
-└── README.md            # This file
+│   ├── index.ts           # Worker のエントリポイント
+│   └── __tests__/         # テスト
+├── wrangler.toml          # Worker 設定
+├── AGENTS.md              # AI コーディングエージェント向けガイド
+└── .github/               # CI / Dependabot / PR テンプレート
 ```
 
-## Configuration
+## バインディングの追加
 
-### Environment Bindings
+KV / R2 / D1 などを使う場合は、`wrangler.toml` にバインディングを追加し、`src/index.ts` の `Env` インターフェースに型を追加します。`wrangler.toml` と `Env` にコメントアウトされた例があります。
 
-To add Cloudflare services (KV, R2, Durable Objects, etc.):
+シークレットは `wrangler.toml` に書かず、ローカルでは `.dev.vars`（gitignore 済み）、本番では `wrangler secret put` を使います。
 
-1. Update `wrangler.toml` with the binding configuration
-2. Add the corresponding type to the `Env` interface in `src/index.ts`
-3. Access via the `env` parameter in the fetch handler
+## AI エージェントを使った開発
 
-Example bindings are commented out in both files for reference.
+規約とコマンドは [`AGENTS.md`](AGENTS.md) にまとめています（`CLAUDE.md` はそれを参照するだけです）。
 
-## Development Commands
+## セキュリティ
 
-| Command            | Description                    |
-| ------------------ | ------------------------------ |
-| `pnpm run dev`     | Start local development server |
-| `pnpm run deploy`  | Deploy to Cloudflare Workers   |
-| `pnpm run start`   | Alias for `dev`                |
-| `npx tsc --noEmit` | Run type checking              |
+脆弱性の報告方法は [SECURITY.md](SECURITY.md) を参照してください。
 
-## Resources
+## ライセンス
+
+[MIT License](LICENSE)
+
+## 参考
 
 - [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers/)
 - [Wrangler CLI Documentation](https://developers.cloudflare.com/workers/wrangler/)
-- [Cloudflare Workers Examples](https://developers.cloudflare.com/workers/examples/)
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Author
-
-**takuya320**
-
-- GitHub: [@takuya320](https://github.com/takuya320)
-
-## Acknowledgments
-
-- Built with [Cloudflare Workers](https://workers.cloudflare.com/)
-- Bootstrapped with `npm create cloudflare@latest`
