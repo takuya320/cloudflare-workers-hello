@@ -42,7 +42,7 @@ Prettier (`.prettierrc`, `.editorconfig`) is the only formatter; tabs for indent
 
 ## Language
 
-- **Agent-facing files are written in English**: `AGENTS.md`, `CLAUDE.md`, `.claude/` (skills), code comments, and commit messages.
+- **Agent-facing files are written in English**: `AGENTS.md`, `CLAUDE.md`, `.agents/` (skills), code comments, and commit messages.
 - **Human-facing documents are written in Japanese**: `README.md`, `SECURITY.md`, `.github/pull_request_template.md`, and PR descriptions.
 - Replies, plans, and review reports addressed to the maintainer are in Japanese.
 
@@ -67,6 +67,8 @@ Solo project: no external contributors are expected, so these rules exist for co
 **Tests**: test behavior, not implementation; cover error paths; inject time and randomness so tests stay deterministic.
 
 **Security**: secrets only via environment variables; validate all input server-side. Run `pnpm audit` regularly. Vulnerability reports: see `SECURITY.md`.
+
+**Agent skills**: skills live in `.agents/skills/<name>/SKILL.md`, which Codex and Cursor read directly. `.claude/skills` is a symlink to it for Claude Code, so never add skills under `.claude/skills` directly.
 
 **Dependencies**: minimize them; vet license, size, and maintenance before adding. Always commit `pnpm-lock.yaml`. Dependabot opens weekly update PRs (Mondays 09:00 JST) with minor/patch updates grouped.
 
