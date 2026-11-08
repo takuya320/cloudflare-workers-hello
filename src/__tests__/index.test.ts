@@ -2,27 +2,15 @@ import worker from '../index';
 import { Env } from '../index';
 
 describe('Worker', () => {
-	// Mock environment and execution context
 	const mockEnv: Env = {};
-	const mockCtx: ExecutionContext = {
+	// Deliberately partial: the handler never touches `ctx`, and listing every
+	// `ExecutionContext` member broke type-checking on each
+	// @cloudflare/workers-types release that added one (exports, tracing, abort,
+	// mapVirtualHost, ...). Stub only what a handler is likely to call.
+	const mockCtx = {
 		waitUntil: jest.fn(),
 		passThroughOnException: jest.fn(),
-		props: {},
-		// `exports` became a required field in @cloudflare/workers-types v5.
-		// The worker under test never touches it, so an empty stub is enough.
-		exports: {} as Cloudflare.Exports,
-		// `tracing` became a required field in @cloudflare/workers-types.
-		// The worker under test never touches it, so a no-op stub is enough;
-		// the real `Tracing` shape (incl. the `Span` class) can't be constructed here.
-		tracing: {
-			enterSpan: jest.fn(),
-			startActiveSpan: jest.fn(),
-			Span: jest.fn(),
-		} as unknown as Tracing,
-		// `abort` became a required field in @cloudflare/workers-types.
-		// The worker under test never calls it, so a no-op stub is enough.
-		abort: jest.fn(),
-	};
+	} as Partial<ExecutionContext> as ExecutionContext;
 
 	describe('fetch handler', () => {
 		it('should return "Hello Worker!" response', async () => {

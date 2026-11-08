@@ -24,7 +24,7 @@ Node version is pinned in `.node-version` (CI and mise/fnm read it). Package man
 
 **Entry point**: `src/index.ts` — default export with an async `fetch(request, env, ctx)` handler, plus the `Env` interface that declares bindings (currently empty).
 
-**Testing**: tests live under `src/__tests__/` and run with Jest (`ts-jest`). Call the handler directly with a `Request`; no HTTP server is needed.
+**Testing**: tests live under `src/__tests__/` and run with Jest (`ts-jest`). Call the handler directly with a `Request`; no HTTP server is needed. Mock runtime objects such as `ExecutionContext` partially (only what the code under test uses): `@cloudflare/workers-types` keeps adding required members, so an exhaustive mock breaks type-checking on routine Dependabot bumps.
 
 **Type checking**: `tsconfig.json` has `noEmit: true`; Wrangler does the bundling. `pnpm run lint` runs `tsc --noEmit`.
 
